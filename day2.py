@@ -1,7 +1,7 @@
 import sys
 
 file = ""
-if str(sys.argv[len(sys.argv)-1]) == 'test':
+if str(sys.argv[-1]) == 'test':
 	file = "tests/"
 data_file = file + "day2.txt"
 
