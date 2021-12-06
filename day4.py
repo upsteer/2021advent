@@ -37,40 +37,55 @@ for li in sorted(mixed_dict.keys()):
 print("horizontal \n", boards)
 print("vertical \n", mixed_boards)
 print("draw \n", draw)
+
 def max_indexer(lines):
 	index_list = []
 	num_list = []
-	for line in lines:
+	line_max = []
+	win_index_list = []
+	for inn, line in enumerate(lines):
 		max_index = 0
 		max_num = 0
+		win_index = 0
 		for num in line:
 			if draw.index(num)>max_index:
 				max_index = draw.index(num)
 				max_num = num
+				win_index = inn
+		line_max.append(f"{str(line)} + {max_num} + {max_index}")
 		index_list.append(max_index)
 		num_list.append(max_num)
+		win_index_list.append(win_index)
 	return (min(index_list),
-		num_list[index_list.index(min(index_list))])
+		num_list[index_list.index(min(index_list))],
+		win_index_list[index_list.index(min(index_list))])
 
-(min_i_h, draw_num_h) = max_indexer(boards)
-(min_i_v, draw_num_v) = max_indexer(mixed_boards)
-fast_draw = draw_num_v
-final_board = mixed_boards
-winner_board = min_i_v
-if draw_num_h > draw_num_v:
-	fast_draw = draw_num_h
-	winner_board = min_i_h
-	final_board = boards
-	print("won horizontal")
+(min_i_h, draw_num_h, win_ind_h) = max_indexer(boards)
+(min_i_v, draw_num_v, win_ind_v) = max_indexer(mixed_boards)
+print('h', draw_num_h, win_ind_h)
+print('v', draw_num_v, win_ind_v)
+fast_draw = draw_num_h
+final_board = boards
+winner_board = win_ind_h
+if min_i_h > min_i_v:
+	fast_draw = draw_num_v
+	final_board = mixed_boards
+	winner_board = win_ind_v
+	print("won vertical")
 
-winner = final_board[winner_board-winner_board%5:winner_board-winner_board%5+5]
-print(winner)
+board_num = winner_board-winner_board%5
+print(board_num)
+winner = final_board[board_num:board_num+5]
 draw = draw[0:draw.index(fast_draw)+1]
 sum=0
+untouched = []
+print(winner)
 for line in winner:
 	for num in line:
 		if not num in draw:
 			sum+=num
+			untouched.append(num)
+print('un', untouched)
 print(sum, fast_draw, sum*fast_draw)
 
 
