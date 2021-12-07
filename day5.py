@@ -72,3 +72,6 @@ print(count)
 
 
 # For Part 1 comment out line 21 to 43
+
+
+
