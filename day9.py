@@ -9,13 +9,10 @@ with open(data_file, 'r') as f:
     input = [line.strip() for line in f]
 
 heat_map = {}
-heat_obj = {}
 for j, line in enumerate(input):
 	for i, depth in enumerate(line):
 		heat_map[f"{str(i)},{str(j)}"] = line[i]
-		# heat_obj[str(j)+str[i]] = line[i]
 dirs = [(0,1), (1,0), (-1,0), (0,-1)]
-print(heat_map)
 result = []
 resulting_lows = []
 for heat in heat_map:
