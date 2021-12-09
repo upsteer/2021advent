@@ -13,7 +13,6 @@ day_list = []
 each_day = input
 population = len(input)
 for day in range(80):
-	# print(day)
 	new_day = []
 	add_new = 0
 	for inp in each_day:
@@ -25,7 +24,16 @@ for day in range(80):
 			new_day.append(num)
 	for i in range(add_new):
 		new_day.append(8)
-	# print(",".join(str(v) for v in new_day))
 	each_day = new_day
 	print(len(each_day))
-# print(len(each_day))
+
+population = len(input)
+
+print(population)
+total_days = 80
+for fish in each_day:
+	temp_day = total_days - fish
+	factor_8 = math.floor(temp_day/8)
+	population += math.floor(math.pow(2, factor_8))
+
+print(population*2)
