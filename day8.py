@@ -19,6 +19,7 @@ mapper = {
 }
 #Actual Numbers
 mapp_num = [1,4,7,8]
+unique = []
 mapp = []
 #`mapp` is for the Actual Numbers corresponding to its number of letters
 for mp in mapp_num:
@@ -34,9 +35,16 @@ with open(data_file, 'r') as f:
 		numbar = ""
 		for light in each:
 			if len(light) in mapp:
+				print(light)
 				count+=1
+			# else:
+			# 	print('here is ', mapper.get(str(list(mapper.values()).index(len(light)))))
+		for li in every:
+			if len(li) in mapp:
+				print('in input', li)
+				print('which is ', list(mapper.values()).index(len(li)))
 			else:
-				print('here is ', mapper.get(str(list(mapper.values()).index(len(light)))))
+				print('unrecog', li)
 		# for light in every:
 		# 	if len(light) in mapp:
 		# 		count+=1
@@ -58,12 +66,8 @@ with open(data_file, 'r') as f:
 			# 			numbar+=str(dig)
 			# else:
 			# 	numbar+=str(digit)
-		numbars.append(numbar)
+		# numbars.append(numbar)
 
-print(numbars)
-
-
-# print(input)
 print(count)
 
 
